@@ -1,0 +1,3 @@
+Aula 009 - Aviso
+- Todas as aulas estão postadas no repositório https://github.com/luizomf/curso-js
+- Cuidado: a ordem automática da Udemy, e a ordem que estou usando, não é a mesma ordem das aulas.

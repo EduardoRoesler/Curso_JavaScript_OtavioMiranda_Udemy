@@ -1,0 +1,2 @@
+Aula 007
+- Aula sobre console.log()

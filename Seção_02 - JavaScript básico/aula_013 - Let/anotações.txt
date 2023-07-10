@@ -1,0 +1,6 @@
+- Var está em desuso e não deve mais ser utilizada. Em seu lugar, utilizamos let e const
+
+- Let é acessivel apenas no bloco em que foi declarada
+- O uso de let é recomendado quando se precisa de uma variável com escopo limitado a um bloco específico ou quando se deseja evitar a redeclaração acidental de variáveis
+
+- Variáveis Let NÃO podem ser redeclaradas

@@ -1,0 +1,2 @@
+Aula 004
+- Explicação do curso, trazendo sua estrutura, modulos e assuntos abordados em cada fase

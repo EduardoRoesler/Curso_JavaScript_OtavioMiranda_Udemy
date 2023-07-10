@@ -1,0 +1,1 @@
+- Fazer uso do console.log(), significa fazer uso do método log() que está dentro do objeto console

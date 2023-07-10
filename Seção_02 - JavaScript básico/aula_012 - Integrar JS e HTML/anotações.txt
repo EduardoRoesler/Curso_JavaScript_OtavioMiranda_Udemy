@@ -1,0 +1,7 @@
+Existem 3 métodos de integração do código:
+
+- Head: linkando um arquivo, através da TAG <script src=""></script> - o problema de executar no Head é que será executado antes do HTML, podendo gerar problemas em alguns casos  
+
+- Body: linkando um arquivo, através da TAG <script src=""></script> - geralmente colocado ao final do body, após todo o conteúdo da página, para que este conteúdo possa ser alterado corretamente
+
+- Body: escrevendo dentro da TAG <script> 

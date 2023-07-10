@@ -1,0 +1,2 @@
+Aula 003 - AVISO
+- Lembrete de salvar arquivos no VSCode
