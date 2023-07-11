@@ -1,0 +1,3 @@
+- Var pode ser redeclarada e este é um comportamento indesejado, pois pode gerar duplicidade de declarações
+
+- É incorreto, do ponto de vista de boas práticas, utilizar declarações globais 

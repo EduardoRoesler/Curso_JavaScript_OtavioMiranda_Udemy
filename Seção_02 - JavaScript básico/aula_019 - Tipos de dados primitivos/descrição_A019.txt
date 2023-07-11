@@ -1,0 +1,2 @@
+Aula 019
+- Tipos de dados PRIMITIVOS e seus funcionamentos

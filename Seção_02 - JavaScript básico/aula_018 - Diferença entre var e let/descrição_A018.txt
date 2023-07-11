@@ -1,0 +1,3 @@
+Aula 018
+- Diferenças entre var e let
+- Declarações globais

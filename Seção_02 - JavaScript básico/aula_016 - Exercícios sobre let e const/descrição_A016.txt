@@ -1,0 +1,2 @@
+Aula 016 - Exercícios
+- Exercícios sobre let e const

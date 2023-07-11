@@ -1,0 +1,2 @@
+Aula 023
+- Exercício sobre variáveis

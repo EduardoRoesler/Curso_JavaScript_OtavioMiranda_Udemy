@@ -1,0 +1,15 @@
+Aritméticos
+- Adição (+) - Realiza soma e concatenação
+- Subtração (-) 
+- Divisão (/)
+- Multiplicação (*)
+- Potenciação (**)
+- Resto da divisão (%)
+
+Ordem de precedencia de operadores
+1-    () - primeiro sempre o que estiver entre parenteses
+2-    **
+3-    * / %
+4-    + -
+
+

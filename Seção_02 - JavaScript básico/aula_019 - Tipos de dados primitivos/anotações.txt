@@ -1,0 +1,9 @@
+- Strings - Texto
+
+- Number - Números, seja int, seja float. JS não faz diferenciação
+
+- Undefined - Não aponta para nenhum local na memória. Ocorre, por exemplo, ao declarar uma variável sem Inicializá-la. Undefined é apontada pelo compilador, não pelo programador
+
+- Null - Não aponta para nenhum local na memória. Null é inicializada pelo programador, ao contrário do undefinedl. Caso usar typeof em null, ocorre um bug, pois ele é definido como objeto
+
+- Boolean - True/False
