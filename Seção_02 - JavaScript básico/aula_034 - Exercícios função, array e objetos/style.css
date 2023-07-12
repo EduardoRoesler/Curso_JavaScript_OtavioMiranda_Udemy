@@ -1,0 +1,13 @@
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    padding: 100px;
+    gap: 5px;
+    font-family: sans-serif;
+}
+
+.form button{
+    height: 30px;
+    margin-top: 25px;
+}
