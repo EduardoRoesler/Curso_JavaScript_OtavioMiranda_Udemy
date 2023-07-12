@@ -1,0 +1,2 @@
+Aula 030
+- Caso específico de mutabilidade dos valores internos de const durante o uso de variáveis de tipo mutável

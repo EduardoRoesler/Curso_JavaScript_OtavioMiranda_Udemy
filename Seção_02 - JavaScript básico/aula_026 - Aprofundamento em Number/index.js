@@ -18,3 +18,5 @@ num3 += num4
 num3 = parseFloat(num3.toFixed(2))
 console.log(num3)
 //Outra maneira de resolver seria multiplicar por 10 as variáveis e realizar as operações com numeros inteiros e ao final dividir por 10 novamente
+
+console.log(10/0) //É necessário tomar cuidado, pois o js entende que um número dividido por 0 tende à infinito, portanto retorna infinito. Em um resultado booleano, por exemplo, pode retornar true e gerar problemas de lógica
