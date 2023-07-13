@@ -1,0 +1,2 @@
+Aula 039
+- Short circuit evaluation
