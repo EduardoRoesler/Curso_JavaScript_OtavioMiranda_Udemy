@@ -14,6 +14,10 @@
 console.log('Eduardo' && 0 && 'Nicole') //Retorna 0, pois é o resultado false.
 console.log('Eduardo' && 'Nicole' && 'Valdenir') //Retorna valdenir, pois avaliou todos os resultados, todos foram true e retornou o ultimo
 
+console.log(0 || false || null) //Retorna null pois o resultado é false, então avalia até o fim
+console.log(0 || false || 'Eduardo' || null) //Retorna 'Eduardo' pois o resultado é true
+
+
 
 /*
 FALSY VALUES
@@ -31,8 +35,21 @@ FALSY VALUES
 //Uso prático
 function falaOi(){
     return console.log('Oi')
-}//COMENTAR MELHOE ESSA FUNÇÃO
+}
 
-const vaiExecutar = false
-
+let vaiExecutar = true
 vaiExecutar && falaOi()
+
+vaiExecutar = false
+vaiExecutar && falaOi()
+
+vaiExecutar = 0
+vaiExecutar && falaOi()
+
+vaiExecutar = ''
+vaiExecutar && falaOi()
+
+//Exemplo prático
+//Imagine um sistema onde o usuário deve selecionar uma cor, mas caso não selecione, a cor padrão deve ser estipulada
+const corUsuario = null
+const corUtilizada = corUsuario || 'preto' //retornará preto
