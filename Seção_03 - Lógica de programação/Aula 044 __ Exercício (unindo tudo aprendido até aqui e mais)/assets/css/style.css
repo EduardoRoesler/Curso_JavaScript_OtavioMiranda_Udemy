@@ -25,6 +25,7 @@ body{
 
 .container{
     max-width: 640px;
+    min-width: 500px;
     margin: 50px auto;
     padding: 40px;
     background-color: #fff;
@@ -59,4 +60,13 @@ form button{
 
 form button:hover{
     background: var(--secondary__color);
+}
+
+h1, h3{
+    text-align: center;
+}
+
+.tabela__container{
+    display: flex;
+    justify-content: space-between;
 }
