@@ -1,0 +1,2 @@
+Aula 042 
+- Modelo HTML e CSS para futuros exercícios
