@@ -1,5 +1,5 @@
 const button = document.querySelector('button')
-const resp = document.querySelector('.resp')
+const resp = document.querySelector('#resp')
 
 //TODO: VERIFICAR COMO ALTERAR O FUNDO DA RESP COM O JS PADRÃO
 
@@ -17,11 +17,13 @@ function calcular(event){
     } else if( altura<0.5 || altura>2.5 ){
         res='Altura inválida'
     } else {
-
-    let decRes = declaracao(imc)
-    res = (`Seu IMC é ${imc.toFixed(1)} (${decRes})`)
-
+        let decRes = declaracao(imc)
+        res = (`Seu IMC é ${imc.toFixed(1)} (${decRes})`)
 }
+
+    if (res==='Peso inválido' || res==='Altura inválida' ){
+        resp.toggleAttribute('class', 'fail')
+    }
 
     resp.innerHTML = res
 
