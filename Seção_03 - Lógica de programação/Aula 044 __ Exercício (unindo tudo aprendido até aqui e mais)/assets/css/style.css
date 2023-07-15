@@ -71,6 +71,18 @@ h1, h3{
     justify-content: space-between;
 }
 
+.fail, .sucess{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: max-content;
+    padding-top: 3px;
+}
+
 .fail{
-    background-color: red;
+    background-color: rgb(248, 41, 41);
+}
+
+.sucess{
+    background-color: rgb(44, 133, 44);
 }

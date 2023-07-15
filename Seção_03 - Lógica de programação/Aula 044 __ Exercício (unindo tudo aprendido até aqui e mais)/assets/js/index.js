@@ -1,7 +1,6 @@
 const button = document.querySelector('button')
 const resp = document.querySelector('#resp')
 
-//TODO: VERIFICAR COMO ALTERAR O FUNDO DA RESP COM O JS PADRÃO
 
 function calcular(event){
     event.preventDefault()
@@ -20,9 +19,14 @@ function calcular(event){
         let decRes = declaracao(imc)
         res = (`Seu IMC é ${imc.toFixed(1)} (${decRes})`)
 }
+//TODO: Separar em uma nova função as verificações
 
     if (res==='Peso inválido' || res==='Altura inválida' ){
-        resp.toggleAttribute('class', 'fail')
+        resp.classList.remove('sucess')
+        resp.classList.add('fail')
+    } else {
+        resp.classList.remove('fail')
+        resp.classList.add('sucess')
     }
 
     resp.innerHTML = res
