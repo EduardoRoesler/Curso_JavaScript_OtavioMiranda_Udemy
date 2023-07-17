@@ -1,9 +1,6 @@
-const button = document.querySelector('button')
-const resp = document.querySelector('#resp')
+const form = document.querySelector('#form')
 
-
-function calcular(event){
-    event.preventDefault()
+function calcular(){
 
     const peso = Number(document.querySelector('#peso').value)
     const altura = Number(document.querySelector('#altura').value)
@@ -18,9 +15,16 @@ function calcular(event){
     } else {
         let decRes = declaracao(imc)
         res = (`Seu IMC é ${imc.toFixed(1)} (${decRes})`)
+    }
+    
+    resultado(res)
 }
-//TODO: Separar em uma nova função as verificações
 
+
+function resultado(res){
+    const resp = document.querySelector('#resp')
+    resp.innerHTML='' //Limpa resp
+    
     if (res==='Peso inválido' || res==='Altura inválida' ){
         resp.classList.remove('sucess')
         resp.classList.add('fail')
@@ -29,9 +33,11 @@ function calcular(event){
         resp.classList.add('sucess')
     }
 
-    resp.innerHTML = res
-
+    const paragrafo = document.createElement('p') //Cria paragrafo
+    paragrafo.innerHTML = res //Insere res em paragrafo
+    resp.appendChild(paragrafo) //Insere p em resp
 }
+
 
 function declaracao(imc){
     let dec
@@ -53,4 +59,8 @@ function declaracao(imc){
     return dec
 }
 
-button.addEventListener('click', calcular)
+form.addEventListener('submit', function (e){ //posso adicionar uma função anônima aqui, e desenvolvo no próprio bloco
+    e.preventDefault()
+    console.log('evento prevenido')
+    calcular()
+})
