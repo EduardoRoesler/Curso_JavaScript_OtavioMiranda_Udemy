@@ -33,3 +33,22 @@ console.log('Dia da semana', data.getDay()) //Domingo = 0
 console.log('Data atual em milesimos de segundo', Date.now())
 const dataAtualEmMS = new Date(1689646945039) //Milesimos de segundo da linha acima
 console.log(dataAtualEmMS.toString())
+
+//Exemplo prático: função para formatar datas
+function formataData(data){
+    const dia = zeroAEsquerda(data.getDate())
+    const mes = zeroAEsquerda(data.getMonth() + 1) //Adiciona 1, pois o js retorna os meses de 0 - 11
+    const ano = zeroAEsquerda(data.getFullYear())
+    const hora = zeroAEsquerda(data.getHours())
+    const min = zeroAEsquerda(data.getMinutes())
+    const seg = zeroAEsquerda(data.getSeconds())
+
+    return `${dia}/${mes}/${ano} ${hora}:${min}:${seg}`
+}
+
+function zeroAEsquerda(num){
+    return num >= 10 ? num : `0${num}`
+}
+
+const dataFormatada = formataData(data)
+console.log(dataFormatada)
