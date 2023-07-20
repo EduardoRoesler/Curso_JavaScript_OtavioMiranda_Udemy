@@ -1,0 +1,4 @@
+Aula 049
+- Mais diferenças entre var, let e const 
+-- Escopo let e var
+-- Hoisting

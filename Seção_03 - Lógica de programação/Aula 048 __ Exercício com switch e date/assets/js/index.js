@@ -1,12 +1,12 @@
-//Primeira solução (trabalhosa)
-/* function getActualDate(){
-    const resp = document.querySelector('.resp')
+//PRIMEIRA SOLUÇÃO
+function getActualDate1(){
+    const resp = document.querySelector('.resp1')
     const date = new Date()
 
-    resp.innerHTML = getFormatedDate(date)
+    resp.innerHTML = getFormatedDate1(date)
 }
 
-function getFormatedDate (date){
+function getFormatedDate1 (date){
     const dayNum = date.getDay()
     const dayMonth = date.getDate()
     const monthNum = date.getMonth()
@@ -14,8 +14,8 @@ function getFormatedDate (date){
     const hour = date.getHours()
     const min = date.getMinutes()
     
-    const dayText = getDayText(dayNum)
-    const monthText = getMonthText(monthNum)
+    const dayText = getDayText1(dayNum)
+    const monthText = getMonthText1(monthNum)
 
     return (
         `${dayText}, ${dayMonth} de ${monthText} de ${year} 
@@ -25,7 +25,7 @@ function getFormatedDate (date){
     )
 }
 
-function getDayText(day){
+function getDayText1(day){
     let getDayText
 
     switch (day) {
@@ -53,7 +53,7 @@ function getDayText(day){
     }
 }
 
-function getMonthText(month){
+function getMonthText1(month){
     let getMonthText
 
     switch (month) {
@@ -96,15 +96,68 @@ function getMonthText(month){
     }
 }
 
-getActualDate() 
-*/
+getActualDate1()  
 
-//Segunda solução
-const resp = document.querySelector('.resp')
-const date = new Date()
-const options = {
-    dateStyle:'full', //Formato da data
-    timeStyle:'short' //Formato da hora
+//SEGUNDA SOLUÇÃO
+function getActualDate2(){
+    const resp = document.querySelector('.resp2')
+    const date = new Date()
+    const dateOptions = {
+        dateStyle: 'full', //Formato da data
+    }
+
+    const timeOptions = {
+        timeStyle: 'short', //Formato da hora
+    }
+
+    resp.innerHTML = `${date.toLocaleDateString('pt-BR', dateOptions)} 
+        <br/>
+        <br/>
+        ${date.toLocaleTimeString('pt-BR', timeOptions)}`
+    
+    /* 
+    - Posso retirar essas constantes e colocar o seu conteúdo diretamente no segundo argumento. Da seguinte forma:
+    resp.innerHTML = date.toLocaleDateString('pt-BR', {dateStyle:'full'})  
+    */
 }
 
-resp.innerHTML = date.toLocaleDateString('pt-BR', options)
+getActualDate2()
+
+//TERCEIRA SOLUÇÃO
+function getActualDate3(){
+    const resp = document.querySelector('.resp3')
+    const date = new Date()
+
+    resp.innerHTML = getFormatedDate3(date)
+}
+
+function getFormatedDate3(date){
+    const dayNum = date.getDay()
+    const dayMonth = date.getDate()
+    const monthNum = date.getMonth()
+    const year = date.getFullYear()
+    const hour = date.getHours()
+    const min = date.getMinutes()
+    
+    const dayText = getDayText3(dayNum)
+    const monthText = getMonthText3(monthNum)
+
+    return (
+        `${dayText}, ${dayMonth} de ${monthText} de ${year} 
+        <br/>
+        <br/> 
+        ${hour}:${min}`
+    )
+}
+
+function getMonthText3(month){
+    const months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
+    return months[month]
+}
+
+function getDayText3(day){
+    const daysOfWeek = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado']
+    return daysOfWeek[day]
+}
+
+getActualDate3()
