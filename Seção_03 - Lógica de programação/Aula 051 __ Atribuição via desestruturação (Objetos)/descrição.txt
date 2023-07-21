@@ -1,0 +1,2 @@
+Aula 051
+- Atribuição via desestruturação em objetos

@@ -34,3 +34,24 @@ const [primeiroNumeroD, segundoNumeroD, terceiroNumeroD, quartoNumeroD, quintoNu
 console.log(primeiroNumero, segundoNumero, terceiroNumero, quartoNumero, quintoNumero)
 
 //resto do array
+const letters = ['a', 'b', 'c', 'd', 'e']
+
+const [primeiraLetra, segundaLetra, ...outrasLetras] = letters //outrasLetras irá capturar o resto do array
+//Quando usado nesse contexto, o operador se chama rest operator
+//Quando usado para espalhar algo, se chama spread operator
+
+console.log(outrasLetras) 
+
+//pular valores
+const val = [1, 2, 3, 4, 5, 6]
+
+const [val1, val2, , val4, , val6] = val //Para saltar valores, basta usar uma vírgula
+
+console.log(val1, val2, val4, val6) 
+
+//Destructuring em array de arrays
+//              1          2          3
+//           1  2  3    4  5  6    7  8  9
+const aa = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+const [, [,,aa6]] = aa //A primeira virgula pula o primeiro array, a segunda e terceira pulam os primeiros numeros
+console.log(aa6)
