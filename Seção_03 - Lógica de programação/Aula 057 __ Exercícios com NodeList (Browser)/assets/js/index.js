@@ -18,4 +18,4 @@ for (let p of paragrafos){
     p.style.padding = '10px'
 }
 
-//Por ser uma nodeList, não temos a propriedade style diretamente na variável parágrafos. Sendo necessário percorrer cada parágrafo individualmente e, em seguida, definir o estilo para cada um deles.
+//Por ser uma nodeList, não temos a propriedade style diretamente na variável parágrafos. Sendo necessário percorrer cada parágrafo individualmente e, em seguida, definir o estilo para cada um deles
