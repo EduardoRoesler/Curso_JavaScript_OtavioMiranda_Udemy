@@ -1,2 +1,3 @@
 Aula 057 - Exercício
 - Exercício sobre NodeList
+- Pegar estilo css de elementos
