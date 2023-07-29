@@ -1,0 +1,2 @@
+Aula 063
+- Tratamento de erros (try, catch, throw)
