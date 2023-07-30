@@ -1,0 +1,2 @@
+Aula 066 - Exercício 
+- Criando um timer com setInterval
