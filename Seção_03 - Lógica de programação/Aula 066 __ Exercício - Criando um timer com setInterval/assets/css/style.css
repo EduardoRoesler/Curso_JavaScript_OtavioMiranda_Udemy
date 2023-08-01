@@ -68,3 +68,7 @@ h1{
 .pause{
     color: red;
 }
+
+.hidden{
+    display: none;
+}

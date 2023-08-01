@@ -1,17 +1,24 @@
 //TIMER CONTAINER
 const timer = document.querySelector('.timer')
+const lapsContainer = document.querySelector('.lapsContainer')
 
 
 //BOTÕES
 const iniciarBtn = document.querySelector('.iniciar')
 const pausarBtn = document.querySelector('.pausar')
+const voltaBtn = document.querySelector('.volta')
 
 
 //VARIÁVEIS INICIAIS
 let hour = 0
 let min = 0
 let sec = 0
+
 let intervalId
+
+let volta = 0
+let laps = {}
+let timerValue
 
 
 //ZERO PAD
@@ -40,11 +47,23 @@ document.addEventListener('click', function(e){ //Maneira apresentada pelo profe
         intervalId = setInterval( timerEngine, 1000 )
 
         iniciarBtn.disabled = true
-        iniciarBtn.classList.add('invalid')
+        iniciarBtn.classList.add('hidden')
+        voltaBtn.classList.remove('hidden')
     
         timer.classList.remove('pause')
         pausarBtn.classList.remove('invalid')
     } 
+
+    //LAPS UPDATE
+    if (element.classList.contains('volta')){
+        volta++
+        let lap = [volta, timerValue]
+
+        lap.push(laps)
+        console.log(laps)
+    
+        lapsContainer.innerHTML += laps
+    }
     
     //PAUSAR TIMER
     if (element.classList.contains('pausar')){
@@ -52,6 +71,9 @@ document.addEventListener('click', function(e){ //Maneira apresentada pelo profe
 
         iniciarBtn.disabled = false
         iniciarBtn.classList.remove('invalid')
+
+        iniciarBtn.classList.remove('hidden')
+        voltaBtn.classList.add('hidden')
     
         timer.classList.add('pause')
         pausarBtn.classList.add('invalid')
@@ -71,5 +93,7 @@ document.addEventListener('click', function(e){ //Maneira apresentada pelo profe
 
 //UPDATE DA UI
 function uiUpdate(hour, min, sec){
-    timer.innerHTML = ` ${zeroPad(hour)}:${zeroPad(min)}:${zeroPad(sec)} `
+    timerValue = ` ${zeroPad(hour)}:${zeroPad(min)}:${zeroPad(sec)} `
+    timer.innerHTML = timerValue
+    
 }
