@@ -1,30 +1,75 @@
+//TIMER CONTAINER
 const timer = document.querySelector('.timer')
-const iniciar = document.querySelector('.iniciar')
-const pausar = document.querySelector('.pausar')
-const zerar = document.querySelector('.pausar')
 
-const initialHours = 0
-const initialMins = 0
-const initialSecs = 0
 
-let hours
-let mins
-let secs
+//BOTÕES
+const iniciarBtn = document.querySelector('.iniciar')
+const pausarBtn = document.querySelector('.pausar')
 
-function zeroPad(value) {
-    if (value<10)
-    {return `${value}0`}
+
+//VARIÁVEIS INICIAIS
+let hour = 0
+let min = 0
+let sec = 0
+let intervalId
+
+
+//ZERO PAD
+function zeroPad (value){
+    return value < 10 ? `0${value}` : value
 }
 
-function zeroTimer (){
-    hours = zeroPad(initialHours)
-    mins = zeroPad(initialMins)
-    secs = zeroPad(initialSecs)
 
-    let zeroTimer = `${hours}:${mins}:${secs}`
-    timer.innerHTML = zeroTimer
+//TIMER ENGINE
+function timerEngine(){
+    sec++
+     
+    if (sec>=60){ sec = 0; min++ }
+    if (min>=60){ min = 0; hour++ }
 
-    return zeroTimer
+    uiUpdate(hour, min, sec)
 }
 
-zeroTimer()
+
+//EVENTOS
+document.addEventListener('click', function(e){ //Maneira apresentada pelo professor para gerir eventos
+    const element = e.target //Captura o local do evento de click
+
+    //INICIAR TIMER
+    if (element.classList.contains('iniciar')){ //Caso o element contenha a classe iniciar...
+        intervalId = setInterval( timerEngine, 1000 )
+
+        iniciarBtn.disabled = true
+        iniciarBtn.classList.add('invalid')
+    
+        timer.classList.remove('pause')
+        pausarBtn.classList.remove('invalid')
+    } 
+    
+    //PAUSAR TIMER
+    if (element.classList.contains('pausar')){
+        clearInterval(intervalId)
+
+        iniciarBtn.disabled = false
+        iniciarBtn.classList.remove('invalid')
+    
+        timer.classList.add('pause')
+        pausarBtn.classList.add('invalid')
+    } 
+    
+    //ZERAR TIMER
+    if (element.classList.contains('zerar')){
+        hour, min, sec = [0]
+
+        uiUpdate(hour, min, sec)
+    
+        pausarBtn.classList.remove('invalid')
+        timer.classList.remove('pause')
+    }
+})
+
+
+//UPDATE DA UI
+function uiUpdate(hour, min, sec){
+    timer.innerHTML = ` ${zeroPad(hour)}:${zeroPad(min)}:${zeroPad(sec)} `
+}

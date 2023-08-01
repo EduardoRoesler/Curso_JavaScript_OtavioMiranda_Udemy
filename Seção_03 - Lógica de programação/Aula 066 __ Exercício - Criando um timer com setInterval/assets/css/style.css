@@ -59,3 +59,12 @@ h1{
     background-color: #000;
     color: #fff;
 }
+
+.invalid{
+    pointer-events: none;
+    opacity: 0.5
+}
+
+.pause{
+    color: red;
+}
