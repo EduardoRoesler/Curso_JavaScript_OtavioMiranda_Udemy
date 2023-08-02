@@ -1,42 +1,44 @@
 const taskContainer = document.querySelector('.taskContainer')
 const addTaskEvent = document.querySelector('.addTaskBtn').addEventListener('click', addTask)
 const taskInput = document.querySelector('.taskInput')
+taskInput.addEventListener('keypress', function(e){ //função para enviar ao pressionar enter
+    if (e.keyCode === 13){addTask()} //13 é o keycode referente ao enter
+})
 
 const taskList = []
 
 function addTask(){
-    taskContainer.classList.remove('hidden')
+    let task = taskInput.value //Cria task com o valor do input
 
-    let task = taskInput.value
-    taskList.push(task)
+    if (!task) return //Verifica se existe conteudo no input
 
-    console.log(taskList)
+    taskList.push(task) //Adiciona task à taskList
 
-    uiUpdate()
+    uiUpdate(task) //Envia task para uiUpdate
+
+    taskInputCleaner() //Chama função para limpar input e adicionar focus ao input
 
 }
 
-function uiUpdate(){
-    taskContainer.innerHTML = ''
+function taskInputCleaner (){
+    taskInput.value = '' //Limpa input
+    taskInput.focus() //Focus é uma função nativa do JS que coloca o cursor novamente no input
+}
 
-    taskList.forEach((element)=>{
-        const taskRow = document.createElement('li')
-        taskRow.classList.add('taskRow')
-        const taskRemove = document.createElement('button')
-        taskRemove.classList.add('removeBtn')
-        taskRemove.innerText = 'Apagar'
+function uiUpdate(task){
 
-        const taskItem = document.createElement('span')
-        taskItem.textContent = element
+    const taskRow = document.createElement('li') //Cria li
+    taskRow.classList.add('taskRow') //Adiciona à li - class = "taskRow"
 
+    const taskRemove = document.createElement('button') //Cria botão apagar
+    taskRemove.classList.add('removeBtn') //Adiciona ao botão apagar - class = "remobeBtn"
+    taskRemove.innerText = 'Apagar' //Adiciona o texto do botão apagar
 
-        taskRow.appendChild(taskRemove)
-        taskRow.appendChild(taskItem)
-        taskContainer.appendChild(taskRow)
+    const taskItem = document.createElement('span') //Cria span
+    taskItem.textContent = task //Adiciona task como texto para o span
 
-        
-        
-        
-    })
+    taskRow.appendChild(taskRemove) //Adiciona botão ao li
+    taskRow.appendChild(taskItem) //Adiciona span ao li
+    taskContainer.appendChild(taskRow) //Adiciona li ao ul
     
 }
