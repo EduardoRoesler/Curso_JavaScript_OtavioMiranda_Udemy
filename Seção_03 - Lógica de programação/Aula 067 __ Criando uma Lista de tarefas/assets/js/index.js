@@ -7,6 +7,7 @@ taskInput.addEventListener('keypress', function(e){ //função para enviar ao pr
     if (e.keyCode === 13){addTask(taskInput.value)} //13 é o keycode referente ao enter
 })
 
+//Identifica o evento de click no botão apagar
 taskContainer.addEventListener('click', function(e){
     const taskRemoveBtn = e.target
 
@@ -15,12 +16,11 @@ taskContainer.addEventListener('click', function(e){
     }
 })
 
-const taskList = []
+const taskList = [] //Inicializa o array taskList
 
 //ADICIONAR TAREFA
-function addTask(taskSave){ //REVISAR CODIGO, ALTERAR ESSA VARIAVEL
-    console.log(taskSave)
-    let task = taskSave //Cria task com o valor do input
+function addTask(newTask){
+    let task = newTask //Cria task com o valor do input
 
     if (!task) return //Verifica se existe conteudo no input
 
@@ -87,18 +87,20 @@ function taskRemove(element){
     element.parentElement.remove() //Remove a Task Row
 }
 
+//SALVAR ARRAY COMO JSON NO LOCALSTORAGE
 function saveTaskList(){
     const taskListJSON = JSON.stringify(taskList) //Converte array para JSON
     localStorage.setItem('taskList', taskListJSON) //Salva no localStorage o JSON (Só posso salvar JSON no localStorage)
 }
 
+//RECUPERA ARRAY SALVO NO LOCALSTORAGE
 function handleSaveTaskList(){
-    const saveTaskList = localStorage.getItem('taskList')
-    const taskList = JSON.parse(saveTaskList)
+    const saveTaskList = localStorage.getItem('taskList') //Recupera o array em JSON
+    const taskList = JSON.parse(saveTaskList) //Converte novamente para array
 
-    for (taskSave of taskList){
+    for (taskSave of taskList){ //Cria as tarefas novamente
         addTask(taskSave)
     }
 }
 
-handleSaveTaskList()
+handleSaveTaskList() //Inicializa processo de recuperação das tasks
