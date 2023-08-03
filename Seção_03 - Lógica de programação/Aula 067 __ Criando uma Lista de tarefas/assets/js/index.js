@@ -1,8 +1,10 @@
 const taskContainer = document.querySelector('.taskContainer')
-const addTaskEvent = document.querySelector('.addTaskBtn').addEventListener('click', addTask)
+const addTaskEvent = document.querySelector('.addTaskBtn').addEventListener('click', function(){
+    addTask(taskInput.value)
+})
 const taskInput = document.querySelector('.taskInput')
 taskInput.addEventListener('keypress', function(e){ //função para enviar ao pressionar enter
-    if (e.keyCode === 13){addTask()} //13 é o keycode referente ao enter
+    if (e.keyCode === 13){addTask(taskInput.value)} //13 é o keycode referente ao enter
 })
 
 taskContainer.addEventListener('click', function(e){
@@ -16,7 +18,7 @@ taskContainer.addEventListener('click', function(e){
 const taskList = []
 
 //ADICIONAR TAREFA
-function addTask(taskSave = taskInput.value){
+function addTask(taskSave){ //REVISAR CODIGO, ALTERAR ESSA VARIAVEL
     console.log(taskSave)
     let task = taskSave //Cria task com o valor do input
 
