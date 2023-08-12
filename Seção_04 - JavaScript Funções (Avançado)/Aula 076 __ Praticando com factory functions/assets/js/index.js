@@ -1,0 +1,6 @@
+function criaCalculadora(){
+    
+    return {
+        
+    }
+}
