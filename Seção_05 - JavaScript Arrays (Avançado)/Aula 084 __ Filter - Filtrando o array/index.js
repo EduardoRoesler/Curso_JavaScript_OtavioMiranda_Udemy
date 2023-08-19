@@ -59,7 +59,7 @@ console.log(numMaior10)
 const numMenor10 = numeros.filter(valor=>valor<10) //A própria avaliação retorna true ou false
 console.log(numMenor10)
 
-//Exercício
+//Exercício de uso em objetos
 /*
 - F01: Retorne as pessoas que tem o nome com 5 letras ou mais
 - F02: Retorne as pessoas com mais de 50 anos
