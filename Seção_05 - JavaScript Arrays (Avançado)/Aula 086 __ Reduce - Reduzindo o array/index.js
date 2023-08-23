@@ -51,10 +51,46 @@ function(acumulador, valor, indice, array){
 - Este valor após as chaves será o valor inicial do acumulador
 */
 
+//EXEMPLO BÁSICO DE USO
 const numeros = [0, 1, 10, 30, 77, 20, 2, 6, 99, 40, 23, 11, 56]
-const soma = numeros.reduce(function(acumulador, valor, indice, array){
+const soma = numeros.reduce(function(acumulador, valor){
     acumulador += valor //Acumulador é 0 inicialmente, a cada iteração ele recebe em soma o valor do array
+    console.log(acumulador)
     return acumulador //Retornamos o valor final do acumulador
-}, 0) 
+}, 0) //Se eu não setar o acumulador inicial, ele será o primeiro ítem do array
 
-console.log(soma)
+//EXEMPLO DE USO DO REDUCE EM FUNÇÕES TIPICAMENTE DE FILTER (Não indicado)
+const pares = numeros.reduce((acumulador, valor)=>{
+   if (valor % 2 === 0){ //Se o resto da divisão por 2 for 0 (verifica se o número é par)
+      acumulador.push(valor) //Adiciona o valor ao array do acumulador
+   }
+   return acumulador
+}, []) //O valor inicial do acumulador é um array vazio
+
+console.log(pares) //Não é indicado fazer isso com reduce, mas sim com filter. Porém é bom para entender o funcionamento do método
+
+//EXEMPLO DE USO DO REDUCE EM FUNÇÕES TIPICAMENTE DE MAP (Não indicado)
+const dobro = numeros.reduce((acumulador, valor)=>{
+   acumulador.push(valor*2)
+   return acumulador
+}, [])
+
+console.log(dobro)
+
+//EXERCÍCIO COM OBJETOS
+//Retorne a pessoa mais velha
+const pessoas = [
+   {nome: 'Luiz', idade: 62},
+   {nome: 'Maria', idade: 23},
+   {nome: 'Eduardo', idade: 55},
+   {nome: 'Letícia', idade: 10},
+   {nome: 'Rosana', idade: 64},
+   {nome: 'Wallace', idade: 63}
+]
+
+const maisVelho = pessoas.reduce((acumulador, valor)=>{ 
+   if(valor.idade > acumulador.idade) return valor
+   return acumulador
+}) //Neste caso, como não estou setando valor inicial para o acumulador, o acumulador será o primeiro elemento e o valor será o segundo elemento
+
+console.log(maisVelho)
