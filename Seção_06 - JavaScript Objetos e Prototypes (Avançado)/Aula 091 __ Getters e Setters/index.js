@@ -13,7 +13,7 @@ GETTERS E SETTERS
    - Ele é chamado quando a propriedade é definida como se fosse um atributo.
 
 4. Uso de Getters:
-   - Útil quando você quer executar lógica ou cálculos antes de retornar o valor de uma propriedade.
+   - Útil quando você quer executar lógica ou cálculos antes de retornar o valor de uma propriedade. (Trataremos disso nessa aula)
    - Permite abstrair o acesso à propriedade para fornecer mais controle ou segurança.
 
 5. Uso de Setters:
@@ -25,7 +25,7 @@ GETTERS E SETTERS
    - Setters são definidos usando o prefixo `set`, seguido pelo nome da propriedade e uma função.
 
 7. Vantagens:
-   - Encapsulamento: Getters e setters permitem definir a lógica de acesso e atribuição de propriedades de forma centralizada.
+   - Encapsulamento: Getters e setters permitem definir a lógica de acesso e atribuição de propriedades de forma centralizada. 
    - Controle: Você pode aplicar validações ou lógica específica antes de acessar ou definir propriedades.
 
 8. Desvantagens:
@@ -40,3 +40,35 @@ GETTERS E SETTERS
 
 Getters e setters são uma ferramenta poderosa para controlar como as propriedades de um objeto são acessadas e definidas, permitindo a execução de lógica personalizada durante essas operações. No entanto, é importante usá-los com moderação para manter o código claro e legível.
 */
+
+function Produto (nome, precoDeCompra, precoDeVenda, estoque){
+   this.nome = nome,
+   
+   Object.defineProperties(this, {
+       precoDeCompra: {
+           enumerable: true,
+           value: precoDeCompra,
+           writable: true,
+           configurable: true
+       },
+       precoDeVenda: {
+           enumerable: true,
+           value: precoDeVenda,
+           writable: true,
+           configurable: true
+       }
+   })
+
+   Object.defineProperty(this, 'estoque', { //Imagine que podemos apenas receber números nessa propriedade
+       enumerable: true,
+       configurable: true,
+       get: function(){
+         return estoque
+       },
+       set: 
+   })
+}
+
+const p1 = new Produto('Camiseta', 20, 25, 3)
+console.log(p1)
+console.log(p1.estoque)
