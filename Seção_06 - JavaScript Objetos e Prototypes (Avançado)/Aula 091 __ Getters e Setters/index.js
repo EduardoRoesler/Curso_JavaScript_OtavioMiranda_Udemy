@@ -41,34 +41,47 @@ GETTERS E SETTERS
 Getters e setters são uma ferramenta poderosa para controlar como as propriedades de um objeto são acessadas e definidas, permitindo a execução de lógica personalizada durante essas operações. No entanto, é importante usá-los com moderação para manter o código claro e legível.
 */
 
-function Produto (nome, precoDeCompra, precoDeVenda, estoque){
-   this.nome = nome,
-   
-   Object.defineProperties(this, {
-       precoDeCompra: {
-           enumerable: true,
-           value: precoDeCompra,
-           writable: true,
-           configurable: true
-       },
-       precoDeVenda: {
-           enumerable: true,
-           value: precoDeVenda,
-           writable: true,
-           configurable: true
-       }
-   })
+function Produto (estoque){ //Função construtora que está sendo utilizada para criar um objeto com atributo de estoque
 
-   Object.defineProperty(this, 'estoque', { //Imagine que podemos apenas receber números nessa propriedade
+   let estoquePriv = estoque //Esta variável privada é utilizada para evitar um loop infinito advindo do uso do this. Ao tentar acessar ou definir diretamente a propriedade estoque, criamos um ciclo infinito, pois o getter ou setter seria chamado novamente ao tentar acessar, levando a uma recursão infinita.
+   Object.defineProperty(this, 'estoque', {
+
        enumerable: true,
+
        configurable: true,
-       get: function(){
-         return estoque
+
+       get: function(){ //Em uma função factory, eu faria esse processo dentro do próprio objeto
+         return estoquePriv
        },
-       set: 
+
+       set: function(valor){ //Observe a sintaxe de : e função anônima
+         if (typeof valor !== 'number'){ //Aqui estamos utilizando uma lógica simples para proteger a variável estoque de entradas indevidas
+            console.log('Erro de entrada.')
+            return
+         }
+
+         estoquePriv = valor
+       }
    })
 }
 
-const p1 = new Produto('Camiseta', 20, 25, 3)
+const p1 = new Produto(3)
+
 console.log(p1)
 console.log(p1.estoque)
+
+p1.estoque = 'Teste'
+console.log(p1.estoque)
+
+p1.estoque = 1000
+console.log(p1.estoque)
+
+
+
+
+
+
+
+
+
+
