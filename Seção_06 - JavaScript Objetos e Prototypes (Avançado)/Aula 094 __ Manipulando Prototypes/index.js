@@ -72,6 +72,12 @@ const produto03 = Object.create(Produto.prototype, {
         writable: true,
         configurable: true,
         enumerable: true, 
-        value: ''
-    }
+        value: 'Eduardo'
+    },
+    sobrenome: {
+        writable: true,
+        configurable: true,
+        enumerable: true, 
+        value: 'Roesler'
+    }    
 })
