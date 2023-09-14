@@ -1,53 +1,37 @@
-function validarCPF(cpfString){
-
-    const cpfArray = limparCPF(cpfString)
+function validarCPF (cpf) {
+    let cpfFormatado = formatarCPF(cpf)
+    const base = cpfFormatado.slice(0,9)
+    const verificador01 = calcularVerificador(base)
+    const verificador02 = calcularVerificador([...base, verificador01])
+    const cpfCalculado = [...base, verificador01, verificador02]
+    const isValid = JSON.stringify(cpfFormatado) === JSON.stringify(cpfCalculado)
     
-    const base = cpfArray.slice(0,9)
-    
-    let primeiroVerificador = digitoVerificador(base)
-    base.push(primeiroVerificador)
-
-    let segundoVerificador = digitoVerificador(base)
-    base.push(segundoVerificador)
-
-    const isValid = JSON.stringify(base) === JSON.stringify(cpfArray)
-
-    isValid ? console.log('CPF VÁLIDO') : console.log('CPF INVÁLIDO')
+    isValid ? console.log('CPF Válido') : console.log('CPF Inválido')
 }
 
-function limparCPF(cpf){
-    cpfLimpo = cpf.replace(/\D+/g, '')
-    cpfArray = Array.from(cpfLimpo)
-    return cpfArray
+function formatarCPF(cpf){
+    const cpfLimpo = cpf.replace(/\D+/g, '')
+    return Array.from(cpfLimpo)
+
 }
 
-
-function digitoVerificador(cpf){
-
+function calcularVerificador(cpf){
     let operador = cpf.length + 1
 
-    let cpfOperacao = cpf
-    .map(valor => {
-        valor = valor * operador
-        operador--
-        return valor
-    })
-    .reduce((acumulador, valor)=>{
-        acumulador = valor + acumulador
-        resto = acumulador%11
-        return resto
-    })
+    const cpfOperacao = cpf
+        .map(valor => {
+            valor = valor * operador
+            operador--
+            return valor
+        })
+        .reduce((acumulador, valor)=>{
+            acumulador = valor + acumulador
+            resto = acumulador%11
+            return resto
+        })
 
-    console.log(resto)
+    const verificador = cpfOperacao < 2 ? 0 : 11 - cpfOperacao
 
-    let verificador
-    if(cpfOperacao<2){
-        verificador = 0
-    } else {
-        verificador = 11 - cpfOperacao
-    }
-
-    console.log(verificador)
     return String(verificador)
 }
 
