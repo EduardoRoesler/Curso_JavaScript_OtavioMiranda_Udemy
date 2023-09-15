@@ -20,8 +20,77 @@ POLIMORFISMO
    - Reutilização de Código: Permite que você compartilhe um nome de método comum entre objetos de diferentes tipos, promovendo a reutilização de código.
    - Flexibilidade: Facilita a implementação de interfaces genéricas, onde diferentes objetos podem ser tratados de forma semelhante, independentemente de seu tipo real.
 
-7. Polimorfismo em Outras Linguagens:
-   - O polimorfismo é um conceito comum em programação orientada a objetos e é encontrado em várias linguagens, como Java, C++, Python e C#.
-
 O polimorfismo é um conceito fundamental na programação orientada a objetos e é amplamente utilizado em JavaScript. Ele permite que você crie código mais flexível e reutilizável, onde objetos de diferentes tipos podem ser tratados de maneira uniforme, desde que respondam de forma apropriada a chamadas de métodos comuns.
 */
+
+
+//Superclasse
+function Conta(agencia, conta, saldo){
+   this.agencia = agencia
+   this.conta = conta
+   this.saldo = saldo
+}
+
+Conta.prototype.sacar = function(valor){
+   if (this.saldo < valor){
+      console.log('Saldo insuficiente')
+      this.verSaldo()
+      return
+   }
+
+   this.saldo -= valor
+   console.log(`Sacado R$ ${valor}`)
+   this.verSaldo()
+}
+
+Conta.prototype.depositar = function(valor){
+   this.saldo += valor
+   console.log(`Depositado R$ ${valor}`)
+   this.verSaldo()
+}
+
+Conta.prototype.verSaldo = function(){
+   console.log(`Ag/c ${this.agencia}/${this.conta} | Saldo: R$${this.saldo}`)
+}
+
+const conta = new Conta(176, 109827, 200)
+conta.sacar(400)
+conta.depositar(20)
+
+
+//Abaixo utilizaremos a ContaCorrente como exemplo de substituição de método. Estou substituindo o método sacar do prototype por outro método semelhante porém alterado
+function ContaCorrente(agencia, conta, saldo, limite){
+   Conta.call(this, agencia, conta, saldo)
+   this.limite = limite
+}
+
+ContaCorrente.prototype = Object.create(Conta.prototype)
+ContaCorrente.prototype.constructor = ContaCorrente
+
+ContaCorrente.prototype.sacar = function(valor){ //Copio o método e altero
+   if ((this.saldo + this.limite) < valor){
+      console.log('Saldo insuficiente')
+      this.verSaldo()
+      return
+   }
+
+   this.saldo -= valor
+   console.log(`Sacado R$ ${valor}`)
+   this.verSaldo()
+}
+
+const contaCorrente = new ContaCorrente(899, 913754, 100, 200)
+contaCorrente.sacar(500)
+contaCorrente.sacar(200)
+
+
+//Abaixo temos a ContaPoupanca, verifique que a conta poupança apênas herda o prototype do pai, sem alterá-lo, comportando-se diferente de sua classe irmã ContaCorrente. A diferênça de execução de métodos em classes filhas de um mesmo pai é o chamado polimorfismo
+function ContaPoupanca(agencia, conta, saldo){
+   Conta.call(this, agencia, conta, saldo)
+}
+
+ContaPoupanca.prototype = Object.create(Conta.prototype)
+ContaPoupanca.prototype.constructor = ContaPoupanca
+
+const contaPoupanca = new ContaPoupanca(123123, 1546745, 10)
+contaPoupanca.sacar(20)
